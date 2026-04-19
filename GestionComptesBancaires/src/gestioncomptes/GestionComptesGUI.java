@@ -37,7 +37,7 @@ public class GestionComptesGUI extends JFrame {
 
     // ══════════════════════════════════════════════════════════════════════════
     public GestionComptesGUI() {
-        setTitle("🏦  Gestion des Comptes Bancaires");
+        setTitle("Gestion des Comptes Bancaires");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000, 680);
         setLocationRelativeTo(null);
@@ -62,7 +62,7 @@ public class GestionComptesGUI extends JFrame {
         p.setBackground(BLEU_FONCE);
         p.setBorder(BorderFactory.createEmptyBorder(12, 20, 12, 20));
 
-        JLabel titre = new JLabel("🏦  Gestion des Comptes Bancaires", JLabel.LEFT);
+        JLabel titre = new JLabel("Gestion des Comptes Bancaires", JLabel.LEFT);
         titre.setFont(new Font("Segoe UI", Font.BOLD, 22));
         titre.setForeground(Color.WHITE);
 
@@ -128,10 +128,10 @@ public class GestionComptesGUI extends JFrame {
         btnCRUD.setBackground(Color.WHITE);
         btnCRUD.setBorder(BorderFactory.createEmptyBorder(8, 10, 4, 10));
 
-        btnCRUD.add(creerBouton("➕ Ajouter",     VERT,       e -> ajouterCompte()));
-        btnCRUD.add(creerBouton("✏️ Modifier",    BLEU_CLAIR, e -> modifierCompte()));
-        btnCRUD.add(creerBouton("🗑️ Supprimer",  ROUGE,      e -> supprimerCompte()));
-        btnCRUD.add(creerBouton("🔄 Réinitialiser", Color.GRAY, e -> reinitialiser()));
+        btnCRUD.add(creerBouton("Ajouter",     VERT,       e -> ajouterCompte()));
+        btnCRUD.add(creerBouton("Modifier",    BLEU_CLAIR, e -> modifierCompte()));
+        btnCRUD.add(creerBouton("Supprimer",  ROUGE,      e -> supprimerCompte()));
+        btnCRUD.add(creerBouton("Réinitialiser", Color.GRAY, e -> reinitialiser()));
 
         gc.gridx = 0; gc.gridy = 7; gc.gridwidth = 2;
         form.add(btnCRUD, gc);
@@ -141,8 +141,8 @@ public class GestionComptesGUI extends JFrame {
         btnOps.setBackground(Color.WHITE);
         btnOps.setBorder(BorderFactory.createEmptyBorder(4, 10, 10, 10));
 
-        btnOps.add(creerBouton("💰 Déposer",  new Color(0, 121, 107), e -> deposer()));
-        btnOps.add(creerBouton("💸 Retirer",  ORANGE,                  e -> retirer()));
+        btnOps.add(creerBouton("Déposer",  new Color(0, 121, 107), e -> deposer()));
+        btnOps.add(creerBouton("Retirer",  ORANGE,                  e -> retirer()));
 
         gc.gridy = 8;
         form.add(btnOps, gc);
@@ -191,12 +191,12 @@ public class GestionComptesGUI extends JFrame {
         txtRecherche.setFont(new Font("Segoe UI", Font.PLAIN, 13));
         txtRecherche.putClientProperty("JTextField.placeholderText", "Rechercher…");
 
-        JButton btnRecherche = creerBouton("🔍 Rechercher", BLEU_CLAIR, e -> rechercher());
-        JButton btnTout      = creerBouton("📋 Tous",       Color.DARK_GRAY, e -> rafraichirTable(comptes));
-        JButton btnTri       = creerBouton("⬆️ Trier (solde)", new Color(74, 20, 140), e -> trierParSolde());
-        //JButton btnSauv      = creerBouton("💾 Sauvegarder (BIN)", new Color(1, 87, 155), e -> sauvegarder());
-        JButton btnSauvTexte = creerBouton("📄 Sauvegarder (TXT)", new Color(46, 125, 50), e -> sauvegarderTexte());
-        JButton btnLoadTexte = creerBouton("📂 Charger (TXT)", new Color(245, 124, 0), e -> chargerDepuisFichierTexte());
+        JButton btnRecherche = creerBouton("Rechercher", BLEU_CLAIR, e -> rechercher());
+        JButton btnTout      = creerBouton("Tous",       Color.DARK_GRAY, e -> rafraichirTable(comptes));
+        JButton btnTri       = creerBouton("Trier (solde)", new Color(74, 20, 140), e -> trierParSolde());
+        //JButton btnSauv      = creerBouton("Sauvegarder (BIN)", new Color(1, 87, 155), e -> sauvegarder());
+        JButton btnSauvTexte = creerBouton("Sauvegarder (TXT)", new Color(46, 125, 50), e -> sauvegarderTexte());
+        JButton btnLoadTexte = creerBouton("Charger (TXT)", new Color(245, 124, 0), e -> chargerDepuisFichierTexte());
 
         barreTop.add(new JLabel("Recherche : "));
         barreTop.add(txtRecherche);
@@ -210,7 +210,7 @@ public class GestionComptesGUI extends JFrame {
         barreTop.add(btnLoadTexte);
 
         // Tableau
-        String[] colonnes = {"Numéro", "Titulaire", "Solde (MAD)", "Type", "Taux (%)"};
+        String[] colonnes = {"Numéro", "Titulaire", "Solde", "Type", "Taux (%)"};
         tableModel = new DefaultTableModel(colonnes, 0) {
             public boolean isCellEditable(int r, int c) { return false; }
         };
@@ -278,7 +278,7 @@ public class GestionComptesGUI extends JFrame {
         comptes.add(c);
         rafraichirTable(comptes);
         reinitialiser();
-        statut("✅ Compte " + c.getNumero() + " ajouté avec succès.");
+        statut("Compte " + c.getNumero() + " ajouté avec succès.");
     }
 
     private void modifierCompte() {
@@ -297,7 +297,7 @@ public class GestionComptesGUI extends JFrame {
 
         rafraichirTable(comptes);
         reinitialiser();
-        statut("✏️ Compte " + num + " modifié.");
+        statut("Compte " + num + " modifié.");
     }
 
     private void supprimerCompte() {
@@ -311,7 +311,7 @@ public class GestionComptesGUI extends JFrame {
             comptes.removeIf(c -> c.getNumero().equals(num));
             rafraichirTable(comptes);
             reinitialiser();
-            statut("🗑️ Compte " + num + " supprimé.");
+            statut("Compte " + num + " supprimé.");
         }
     }
 
@@ -325,7 +325,7 @@ public class GestionComptesGUI extends JFrame {
         if (c == null) return;
         c.deposer(montant);
         rafraichirTable(comptes);
-        statut(String.format("💰 Dépôt de %.2f MAD effectué sur le compte %s. Nouveau solde : %.2f MAD",
+        statut(String.format("Dépôt de %.2f MAD effectué sur le compte %s. Nouveau solde : %.2f MAD",
                 montant, num, c.getSolde()));
     }
 
@@ -338,11 +338,11 @@ public class GestionComptesGUI extends JFrame {
         Compte c = trouverParNumero(num);
         if (c == null) return;
         if (!c.retirer(montant)) {
-            erreur("❌ Solde insuffisant ! Solde actuel : " + String.format("%.2f", c.getSolde()) + " MAD");
+            erreur("Solde insuffisant ! Solde actuel : " + String.format("%.2f", c.getSolde()) + " MAD");
             return;
         }
         rafraichirTable(comptes);
-        statut(String.format("💸 Retrait de %.2f MAD effectué. Nouveau solde : %.2f MAD", montant, c.getSolde()));
+        statut(String.format("Retrait de %.2f MAD effectué. Nouveau solde : %.2f MAD", montant, c.getSolde()));
     }
 
     private void rechercher() {
@@ -355,20 +355,20 @@ public class GestionComptesGUI extends JFrame {
                 resultats.add(c);
         }
         rafraichirTable(resultats);
-        statut("🔍 " + resultats.size() + " résultat(s) trouvé(s).");
+        statut(resultats.size() + " résultat(s) trouvé(s).");
     }
 
     private void trierParSolde() {
         comptes.sort(Comparator.comparingDouble(Compte::getSolde));
         rafraichirTable(comptes);
-        statut("⬆️ Comptes triés par solde croissant.");
+        statut("Comptes triés par solde croissant.");
     }
 
     // ── Sauvegarde / Chargement ────────────────────────────────────────────────
     private void sauvegarder() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FICHIER))) {
             oos.writeObject(new ArrayList<>(comptes));
-            statut("💾 Données sauvegardées dans " + FICHIER);
+            statut("Données sauvegardées dans " + FICHIER);
         } catch (IOException ex) {
             erreur("Erreur de sauvegarde : " + ex.getMessage());
         }
@@ -407,12 +407,12 @@ public class GestionComptesGUI extends JFrame {
             writer.printf("SOLDE TOTAL: %.2f MAD%n", totalGeneral);
             writer.println("========================================");
             
-            statut("💾 Données sauvegardées dans " + FICHIER_TEXTE);
+            statut("Données sauvegardées dans " + FICHIER_TEXTE);
             JOptionPane.showMessageDialog(this, 
-                "✅ Sauvegarde réussie !\n\n" +
-                "📁 Fichier: " + FICHIER_TEXTE + "\n" +
-                "📊 Nombre de comptes: " + comptes.size() + "\n" +
-                "💰 Solde total: " + String.format("%.2f", totalGeneral) + " MAD",
+                "Sauvegarde réussie !\n\n" +
+                "Fichier: " + FICHIER_TEXTE + "\n" +
+                "Nombre de comptes: " + comptes.size() + "\n" +
+                "Solde total: " + String.format("%.2f", totalGeneral) + " MAD",
                 "Sauvegarde terminée", 
                 JOptionPane.INFORMATION_MESSAGE);
                 
@@ -426,7 +426,7 @@ public class GestionComptesGUI extends JFrame {
         File f = new File(FICHIER_TEXTE);
         if (!f.exists()) {
             JOptionPane.showMessageDialog(this,
-                "❌ Fichier non trouvé : " + FICHIER_TEXTE + "\n\n" +
+                "Fichier non trouvé : " + FICHIER_TEXTE + "\n\n" +
                 "Veuillez d'abord sauvegarder des comptes en format texte.",
                 "Fichier introuvable",
                 JOptionPane.WARNING_MESSAGE);
@@ -434,7 +434,7 @@ public class GestionComptesGUI extends JFrame {
         }
         
         int option = JOptionPane.showConfirmDialog(this,
-            "⚠️ Attention !\n\n" +
+            "Attention !\n\n" +
             "Charger les comptes depuis le fichier texte écrasera\n" +
             "tous les comptes actuellement en mémoire.\n\n" +
             "Voulez-vous continuer ?",
@@ -488,16 +488,16 @@ public class GestionComptesGUI extends JFrame {
                 comptes.clear();
                 comptes.addAll(nouveauxComptes);
                 rafraichirTable(comptes);
-                statut("📂 " + comptes.size() + " compte(s) chargé(s) depuis le fichier texte.");
+                statut(comptes.size() + " compte(s) chargé(s) depuis le fichier texte.");
                 JOptionPane.showMessageDialog(this,
-                    "✅ Chargement réussi !\n\n" +
-                    "📁 Fichier: " + FICHIER_TEXTE + "\n" +
-                    "📊 Nombre de comptes chargés: " + comptes.size(),
+                    "Chargement réussi !\n\n" +
+                    "Fichier: " + FICHIER_TEXTE + "\n" +
+                    "Nombre de comptes chargés: " + comptes.size(),
                     "Chargement terminé",
                     JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this,
-                    "⚠️ Aucun compte trouvé dans le fichier texte.",
+                    "Aucun compte trouvé dans le fichier texte.",
                     "Chargement terminé",
                     JOptionPane.WARNING_MESSAGE);
             }
@@ -582,7 +582,7 @@ public class GestionComptesGUI extends JFrame {
         if (txtNumero.getText().trim().isEmpty() ||
             txtTitulaire.getText().trim().isEmpty() ||
             txtSolde.getText().trim().isEmpty()) {
-            erreur("❌ Veuillez remplir tous les champs obligatoires (Numéro, Titulaire, Solde).");
+            erreur("Veuillez remplir tous les champs obligatoires (Numéro, Titulaire, Solde).");
             return false;
         }
         
@@ -595,7 +595,7 @@ public class GestionComptesGUI extends JFrame {
                 return false;
             }
         } catch (NumberFormatException e) {
-            erreur("❌ Le numéro de compte doit être un nombre valide !");
+            erreur("Le numéro de compte doit être un nombre valide !");
             return false;
         }
         
@@ -603,15 +603,15 @@ public class GestionComptesGUI extends JFrame {
         try {
             double sol = Double.parseDouble(txtSolde.getText().trim());
             if (sol < 0) { 
-                erreur("❌ Le solde ne peut pas être négatif."); 
+                erreur("Le solde ne peut pas être négatif."); 
                 return false; 
             }
             if (Double.isInfinite(sol) || Double.isNaN(sol)) {
-                erreur("❌ Le solde n'est pas valide.");
+                erreur("Le solde n'est pas valide.");
                 return false;
             }
         } catch (NumberFormatException e) {
-            erreur("❌ Le solde doit être un nombre valide (exemple: 1000.50)."); 
+            erreur("Le solde doit être un nombre valide (exemple: 1000.50)."); 
             return false;
         }
         
@@ -620,16 +620,16 @@ public class GestionComptesGUI extends JFrame {
             try { 
                 double taux = Double.parseDouble(txtTaux.getText().trim());
                 if (taux < 0) {
-                    erreur("❌ Le taux d'intérêt ne peut pas être négatif.");
+                    erreur("Le taux d'intérêt ne peut pas être négatif.");
                     return false;
                 }
                 if (taux > 100) {
-                    erreur("❌ Le taux d'intérêt ne peut pas dépasser 100%.");
+                    erreur("Le taux d'intérêt ne peut pas dépasser 100%.");
                     return false;
                 }
             }
             catch (NumberFormatException e) { 
-                erreur("❌ Le taux doit être un nombre valide."); 
+                erreur("Le taux doit être un nombre valide."); 
                 return false; 
             }
         }
@@ -677,7 +677,7 @@ public class GestionComptesGUI extends JFrame {
             tableModel.addRow(new Object[]{
                 c.getNumero(),
                 c.getTitulaire(),
-                String.format("%.2f", c.getSolde()),
+                String.format(java.util.Locale.FRANCE, "%,.2f MAD", c.getSolde()),
                 ep ? "Épargne" : "Courant",
                 ep ? String.format("%.2f", ((CompteEpargne) c).getTauxInteret()) : "-"
             });
@@ -689,7 +689,10 @@ public class GestionComptesGUI extends JFrame {
         if (row < 0) return;
         txtNumero.setText((String) tableModel.getValueAt(row, 0));
         txtTitulaire.setText((String) tableModel.getValueAt(row, 1));
-        txtSolde.setText(((String) tableModel.getValueAt(row, 2)).replace(",", "."));
+        
+        String soldeAffiche = (String) tableModel.getValueAt(row, 2);
+        txtSolde.setText(soldeAffiche.replace(" MAD", "").replaceAll("[\\s\\u00A0]", "").replace(",", "."));
+        
         boolean ep = "Épargne".equals(tableModel.getValueAt(row, 3));
         chkEpargne.setSelected(ep);
         txtTaux.setEnabled(ep);
