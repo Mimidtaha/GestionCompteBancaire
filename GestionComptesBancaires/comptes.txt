@@ -1,0 +1,18 @@
+=== LISTE DES COMPTES BANCAIRES ===
+Date d'export: Thu Apr 16 15:26:24 GMT+01:00 2026
+
+----------------------------------------
+Type: Compte Épargne
+Numéro: 4
+Titulaire: simo
+Solde: 80000,00 MAD
+Taux d'intérêt: 1,00%
+----------------------------------------
+Type: Compte Courant
+Numéro: 2
+Titulaire: med
+Solde: 9000,00 MAD
+----------------------------------------
+TOTAL: 2 compte(s)
+SOLDE TOTAL: 89000,00 MAD
+========================================
